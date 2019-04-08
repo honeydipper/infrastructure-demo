@@ -9,7 +9,7 @@ provider "google-beta" {
 "terraform" {
   backend "gcs" {
     bucket = "honeydipper-demo"
-    prefix = "terraform-state/${var.project}"
+    prefix = "terraform-state/the-pulsar-236622"
   }
 }
 
