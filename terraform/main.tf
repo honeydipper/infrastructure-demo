@@ -28,6 +28,6 @@ resource "google_compute_subnetwork" "default-us-central1" {
   }
   secondary_ip_range {
     range_name    = "gke-webapp-pods"
-    ip_cidr_range = "10.53.0.0/20"
+    ip_cidr_range = "10.53.0.0/14"
   }
 }
