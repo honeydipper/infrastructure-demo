@@ -25,7 +25,7 @@ resource "google_container_cluster" "this" {
   }
 
   ip_allocation_policy {
-    services_secondary_range_name = "gke-matrix-services-1bc9173f"
-    cluster_secondary_range_name  = "gke-webapp-pods"
+    services_secondary_range_name = "gke-webapp-services"
+    cluster_secondary_range_name  = "gke-matrix-pods-1bc9173f"
   }
 }
