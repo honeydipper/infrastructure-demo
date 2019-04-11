@@ -7,7 +7,7 @@ resource "google_container_cluster" "this" {
   min_master_version       = "1.12.6-gke.10"
   monitoring_service       = "monitoring.googleapis.com"
   network                  = "${var.network}"
-  subnetwork               = "default"
+  subnetwork               = "second"
 
   private_cluster_config {
     enable_private_endpoint = false
@@ -25,7 +25,7 @@ resource "google_container_cluster" "this" {
   }
 
   ip_allocation_policy {
-    services_secondary_range_name = "gke-webapp-services"
-    cluster_secondary_range_name  = "gke-matrix-pods-1bc9173f"
+    services_secondary_range_name = "webapp-services"
+    cluster_secondary_range_name  = "webapp-pods"
   }
 }
