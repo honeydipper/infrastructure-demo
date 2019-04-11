@@ -28,4 +28,8 @@ resource "google_container_cluster" "webapp" {
     services_secondary_range_name = "webapp-services"
     cluster_secondary_range_name  = "webapp-pods"
   }
+
+  depends_on = [
+    "google_compute_subnetwork.second"
+  ]
 }
