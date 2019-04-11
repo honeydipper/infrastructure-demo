@@ -1,4 +1,4 @@
-resource "google_container_cluster" "this" {
+resource "google_container_cluster" "webapp" {
   provider                 = "google-beta"
   name                     = "website"
   zone                     = "us-central1-a"
