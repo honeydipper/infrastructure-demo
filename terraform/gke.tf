@@ -1,13 +1,13 @@
-resource "google_container_cluster" "this" {
-  provider                 = "google-beta"
-  name                     = "website"
-  zone                     = "us-central1-a"
-  initial_node_count       = "1"
-  enable_legacy_abac       = "true"
-  min_master_version       = "1.12.6-gke.10"
-  monitoring_service       = "monitoring.googleapis.com"
-  network                  = "${var.network}"
-  subnetwork               = "default"
+resource "google_container_cluster" "webapp" {
+  provider           = "google-beta"
+  name               = "website"
+  zone               = "us-central1-a"
+  initial_node_count = "1"
+  enable_legacy_abac = "true"
+  min_master_version = "1.12.6-gke.10"
+  monitoring_service = "monitoring.googleapis.com"
+  network            = "${var.network}"
+  subnetwork         = "second"
 
   private_cluster_config {
     enable_private_endpoint = false
@@ -25,7 +25,11 @@ resource "google_container_cluster" "this" {
   }
 
   ip_allocation_policy {
-    services_secondary_range_name = "gke-matrix-services-1bc9173f"
-    cluster_secondary_range_name  = "gke-webapp-pods"
+    services_secondary_range_name = "webapp-services"
+    cluster_secondary_range_name  = "webapp-pods"
   }
+
+  depends_on = [
+    "google_compute_subnetwork.second",
+  ]
 }
