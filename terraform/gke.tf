@@ -29,6 +29,8 @@ resource "google_container_cluster" "webapp" {
     cluster_secondary_range_name  = "webapp-pods"
   }
 
+  default_max_pods_per_node = "32"
+
   depends_on = [
     "google_compute_subnetwork.second",
   ]
